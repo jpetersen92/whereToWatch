@@ -15,15 +15,22 @@ const apiKey = 'wpBNZj7YCKWCgbOoirUk98YWjhsUP0PxcCs8kcXP';
 // show show/movie title, plot_overview, type, 
 
 function App() {
+  const [input, setInput] = useState('')
   const [title, setTitle] = useState('')
   const [titleId, setTitleId] = useState()
   const [searchArr, setSearchArr] = useState([])
+  const [resArr, setResArr] = useState([])
   const [searched, setSearched] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setSearched(true)
     getTitleId()
+  }
+
+  const handleClick = (e) => {
+    setTitleId(e.target.id);
+    setSearched(false);
   }
 
   const getTitleId = () => {
@@ -34,7 +41,7 @@ function App() {
       params : {
         apiKey: apiKey,
         search_field: 'name',
-        search_value: title
+        search_value: input
       }
     }).then((res) => {
       setSearchArr(res.data.title_results)
@@ -43,40 +50,48 @@ function App() {
 
   const getTitleDetails = () => {
     axios({
-      url: baseUrl + 'title/' + titleId + 'details/',
+      url: baseUrl + 'title/' + titleId + '/sources/',
       method: 'GET',
       dataResponse: 'json',
       params : {
         apiKey: apiKey,
       }
     }).then((res) => {
-      console.log(res.data)
+      setResArr(res.data)
     })
   }
+
+  useEffect(() => {
+    if(titleId){
+      getTitleDetails()
+    }
+  }, [titleId])
 
   return (
     <div className="App">
       <h1>Where to Watch</h1>
-      <h2>Search to see if a movie or tv show is available on any streaming services</h2>
+      <h2>Search to see if a movie or tv show is available stream, buy or rent</h2>
 
       <form onSubmit={handleSubmit}>
         <label htmlFor="title" name="title">Search a title</label>
-        <input type="text" name="title" placeholder="movie/show title" onChange={(e) => setTitle(e.target.value)}/>
+        <input type="text" name="title" placeholder="movie/show title" onChange={(e) => setInput(e.target.value)}/>
         <button type="submit" value="submit">Search</button>
       </form>
 
+      <div className="titlePicker">
       {
         searched === true
         ?
         searchArr.map((title) => {
           return (
-            <div id={title.id} key={title.id}>
-              <h3>{title.name}</h3>
-            </div>
+              <button id={title.id} key={title.id} onClick={handleClick}>{title.name}</button>
           )
         })
         : null
       }
+      </div>
+
+
 
     </div>
   );
