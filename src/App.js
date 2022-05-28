@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import './App.css';
+import SearchForm from './components/SearchForm';
+import TitlePIcker from './components/TitlePicker'
 
 const baseUrl = 'https://api.watchmode.com/v1/';
 const apiKey = 'wpBNZj7YCKWCgbOoirUk98YWjhsUP0PxcCs8kcXP';
@@ -15,38 +17,37 @@ const apiKey = 'wpBNZj7YCKWCgbOoirUk98YWjhsUP0PxcCs8kcXP';
 // show show/movie title, plot_overview, type, 
 
 function App() {
-  const [input, setInput] = useState('')
   const [title, setTitle] = useState('')
   const [titleId, setTitleId] = useState()
   const [searchArr, setSearchArr] = useState([])
   const [resArr, setResArr] = useState([])
   const [searched, setSearched] = useState(false)
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setSearched(true)
-    getTitleId()
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   setSearched(true)
+  //   getTitleId()
+  // }
 
-  const handleClick = (e) => {
-    setTitleId(e.target.id);
-    setSearched(false);
-  }
+  // const handleClick = (e) => {
+  //   setTitleId(e.target.id);
+  //   setSearched(false);
+  // }
 
-  const getTitleId = () => {
-    axios({
-      url: baseUrl + 'search/',
-      method: 'GET',
-      dataResponse: 'json',
-      params : {
-        apiKey: apiKey,
-        search_field: 'name',
-        search_value: input
-      }
-    }).then((res) => {
-      setSearchArr(res.data.title_results)
-    })
-  }
+  // const getTitleId = () => {
+  //   axios({
+  //     url: baseUrl + 'search/',
+  //     method: 'GET',
+  //     dataResponse: 'json',
+  //     params : {
+  //       apiKey: apiKey,
+  //       search_field: 'name',
+  //       search_value: input
+  //     }
+  //   }).then((res) => {
+  //     setSearchArr(res.data.title_results)
+  //   })
+  // }
 
   const getTitleDetails = () => {
     axios({
@@ -72,13 +73,23 @@ function App() {
       <h1>Where to Watch</h1>
       <h2>Search to see if a movie or tv show is available stream, buy or rent</h2>
 
-      <form onSubmit={handleSubmit}>
+      <SearchForm setSearched={setSearched} setSearchArr={setSearchArr}/>
+
+      {/* <form onSubmit={handleSubmit}>
         <label htmlFor="title" name="title" className='titleSearch'>Search Results For</label>
         <input type="text" name="title" placeholder="Movie/Show Title" onChange={(e) => setInput(e.target.value)}/>
         <button type="submit" value="submit" className='submit'>Search</button>
-      </form>
+      </form> */}
 
-      <div className="titlePicker">
+      {
+        searched === true
+        ?
+        <TitlePIcker searchArr={searchArr} setSearched={setSearched} setTitleId={setTitleId}/>
+        : null
+      }
+
+
+      {/* <div className="titlePicker">
       {
         searched === true
         ?
@@ -89,7 +100,7 @@ function App() {
         })
         : null
       }
-      </div>
+      </div> */}
 
 
 
