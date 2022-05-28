@@ -73,9 +73,9 @@ function App() {
       <h2>Search to see if a movie or tv show is available stream, buy or rent</h2>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title" name="title">Search a title</label>
-        <input type="text" name="title" placeholder="movie/show title" onChange={(e) => setInput(e.target.value)}/>
-        <button type="submit" value="submit">Search</button>
+        <label htmlFor="title" name="title" className='titleSearch'>Search Results For</label>
+        <input type="text" name="title" placeholder="Movie/Show Title" onChange={(e) => setInput(e.target.value)}/>
+        <button type="submit" value="submit" className='submit'>Search</button>
       </form>
 
       <div className="titlePicker">
