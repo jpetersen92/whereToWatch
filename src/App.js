@@ -54,7 +54,7 @@ function App() {
       <h1>Where to Watch</h1>
       <h2>Search to see if a movie or tv show is available stream, buy or rent</h2>
 
-      <SearchForm setSearched={setSearched} setSearchArr={setSearchArr} baseUrl={baseUrl} apiKey={apiKey}/>
+      <SearchForm setSearched={setSearched} setSearchArr={setSearchArr} baseUrl={baseUrl} apiKey={apiKey} setResults={setResults}/>
 
       {
         searched === true
