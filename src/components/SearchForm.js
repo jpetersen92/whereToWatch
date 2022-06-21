@@ -1,7 +1,8 @@
 import { useState } from "react"
+import axios from "axios"
 
 
-const SearchForm = ({ setSearched, setSearchArr }) => {
+const SearchForm = ({ setSearched, setSearchArr, baseUrl, apiKey }) => {
 
     const [input, setInput] = useState('')
 

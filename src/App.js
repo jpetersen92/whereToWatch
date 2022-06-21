@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css';
 import SearchForm from './components/SearchForm';
 import TitlePIcker from './components/TitlePicker'
+import FinalResults from './components/FinalResults';
 
 const baseUrl = 'https://api.watchmode.com/v1/';
 const apiKey = 'wpBNZj7YCKWCgbOoirUk98YWjhsUP0PxcCs8kcXP';
@@ -16,38 +17,18 @@ const apiKey = 'wpBNZj7YCKWCgbOoirUk98YWjhsUP0PxcCs8kcXP';
 // source name, region, type, price (if available) and web_url to be posted to page
 // show show/movie title, plot_overview, type, 
 
+
+// TO DOS
+// create error handeling for if not data is available or spelt wrong
+
 function App() {
   const [title, setTitle] = useState('')
-  const [titleId, setTitleId] = useState()
+  const [titleId, setTitleId] = useState('')
   const [searchArr, setSearchArr] = useState([])
   const [resArr, setResArr] = useState([])
   const [searched, setSearched] = useState(false)
+  const [results, setResults] = useState(false)
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   setSearched(true)
-  //   getTitleId()
-  // }
-
-  // const handleClick = (e) => {
-  //   setTitleId(e.target.id);
-  //   setSearched(false);
-  // }
-
-  // const getTitleId = () => {
-  //   axios({
-  //     url: baseUrl + 'search/',
-  //     method: 'GET',
-  //     dataResponse: 'json',
-  //     params : {
-  //       apiKey: apiKey,
-  //       search_field: 'name',
-  //       search_value: input
-  //     }
-  //   }).then((res) => {
-  //     setSearchArr(res.data.title_results)
-  //   })
-  // }
 
   const getTitleDetails = () => {
     axios({
@@ -73,36 +54,21 @@ function App() {
       <h1>Where to Watch</h1>
       <h2>Search to see if a movie or tv show is available stream, buy or rent</h2>
 
-      <SearchForm setSearched={setSearched} setSearchArr={setSearchArr}/>
-
-      {/* <form onSubmit={handleSubmit}>
-        <label htmlFor="title" name="title" className='titleSearch'>Search Results For</label>
-        <input type="text" name="title" placeholder="Movie/Show Title" onChange={(e) => setInput(e.target.value)}/>
-        <button type="submit" value="submit" className='submit'>Search</button>
-      </form> */}
+      <SearchForm setSearched={setSearched} setSearchArr={setSearchArr} baseUrl={baseUrl} apiKey={apiKey}/>
 
       {
         searched === true
         ?
-        <TitlePIcker searchArr={searchArr} setSearched={setSearched} setTitleId={setTitleId}/>
+        <TitlePIcker searchArr={searchArr} setSearched={setSearched} setTitleId={setTitleId} setTitle={setTitle} setResults={setResults}/>
         : null
       }
 
-
-      {/* <div className="titlePicker">
       {
-        searched === true
+        results === true
         ?
-        searchArr.map((title) => {
-          return (
-              <button id={title.id} key={title.id} onClick={handleClick}>{title.name}</button>
-          )
-        })
+        <FinalResults title={title} resArr={resArr}/>
         : null
       }
-      </div> */}
-
-
 
     </div>
   );

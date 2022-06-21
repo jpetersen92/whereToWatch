@@ -12,13 +12,17 @@ html {
   font-size: 125%;
 }
 
+body {
+  background-color: darkslategray;
+
+}
+
 .App {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  height: 100vh;
-  background-color: darkslategray;
+  /* height: 100vh; */
   color: #fff;
 }
 
@@ -49,4 +53,26 @@ form {
 
 input, .submit {
   padding: 5px;
+}
+
+.titlePicker {
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.titlePicker button {
+  border-radius: 5px;
+  border: none;
+  margin: 10px;
+  padding: 10px 10px 5px;
+  transition: 0.5s;
+}
+
+.titlePicker button:hover {
+  background-color: #000;
+  color: #fff;
 }

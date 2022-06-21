@@ -1,10 +1,12 @@
 
 
-const TitlePicker = ({ searchArr, setSearched, setTitleId }) => {
+const TitlePicker = ({ searchArr, setSearched, setTitleId, setTitle, setResults }) => {
 
     const handleClick = (e) => {
         setTitleId(e.target.id);
+        setTitle(e.target.textContent);
         setSearched(false);
+        setResults(true);
     }
 
     return (
