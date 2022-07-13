@@ -24,10 +24,10 @@ const FinalResults = ({title, resArr, setSearched, setResults, titleDetails}) =>
                         <div className="title">
                             <h3>{title}</h3>
                             <p>{titleDetails.year}</p>
+                            <p>{titleDetails.plot_overview}</p>
                         </div>
                     <img className="poster" src={titleDetails.poster} alt={title} />
                     </div>
-                    <p>{titleDetails.plot_overview}</p>
                         <h3>Buy, Rent or Stream</h3>
                     <div className="cardContainer">
                     {
