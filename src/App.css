@@ -14,19 +14,19 @@ html {
 
 body {
   background-color: darkslategray;
+  max-width: 1000px;
+  margin: 0 auto;
 
 }
 
 .App {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
-  /* height: 100vh; */
   color: #fff;
 }
 
-h1, h2 {
+h1, h2, h3, h4 {
   margin: 0;
   padding: 0;
 }
@@ -39,6 +39,15 @@ h1 {
 h2 {
   font-size: 1.3rem;
   margin-bottom: 50px;
+}
+
+h4 {
+  margin-bottom: 8px;
+}
+
+.back {
+  margin: 20px auto 0;
+  width: 200px;
 }
 
 form {
@@ -64,7 +73,7 @@ input, .submit {
   margin-top: 50px;
 }
 
-.titlePicker button {
+button {
   border-radius: 5px;
   border: none;
   margin: 10px;
@@ -72,7 +81,57 @@ input, .submit {
   transition: 0.5s;
 }
 
-.titlePicker button:hover {
+button:hover {
   background-color: #000;
   color: #fff;
+}
+
+.results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.titleContainer {
+  display: flex;
+  margin-top: 50px;
+}
+
+.title, .titleContainer img {
+  margin: 0 20px;
+  text-align: center;
+}
+
+.title p {
+  margin: 5px 0;
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.resultsCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px;
+  width: 150px;
+  text-align: center;
+}
+
+.resultsCard ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resultsCard li {
+  margin: 5px 0;
 }

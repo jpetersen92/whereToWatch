@@ -26,11 +26,12 @@ function App() {
   const [titleId, setTitleId] = useState('')
   const [searchArr, setSearchArr] = useState([])
   const [resArr, setResArr] = useState([])
+  const [titleDetails, setTitleDetails] = useState([])
   const [searched, setSearched] = useState(false)
   const [results, setResults] = useState(false)
 
 
-  const getTitleDetails = () => {
+  const getSourceDetails = () => {
     axios({
       url: baseUrl + 'title/' + titleId + '/sources/',
       method: 'GET',
@@ -43,18 +44,51 @@ function App() {
     })
   }
 
+  const getTitleDetails = () => {
+    axios({
+      url: baseUrl + 'title/' + titleId + '/details/',
+      method: 'GET',
+      dataResponse: 'json',
+      params : {
+        apiKey: apiKey,
+      }
+    }).then((res) => {
+      setTitleDetails(res.data)
+      console.log(res.data)
+    })
+  }
+
   useEffect(() => {
     if(titleId){
       getTitleDetails()
+      getSourceDetails()
     }
   }, [titleId])
 
+  const handleClick = () => {
+    setResults(false)
+    setSearched(true)
+}
+
   return (
     <div className="App">
-      <h1>Where to Watch</h1>
-      <h2>Search to see if a movie or tv show is available stream, buy or rent</h2>
+      
+
+      {
+        results === false
+        ? 
+        <>
+        <h1>Where to Watch</h1>
+        <h2>Search to see if a movie or tv show is available stream, buy or rent</h2>
+        </> : null
+        // <button className='back' onClick={handleClick}>Back</button>
+      }
 
       <SearchForm setSearched={setSearched} setSearchArr={setSearchArr} baseUrl={baseUrl} apiKey={apiKey} setResults={setResults}/>
+
+      {
+        results === true ? <button className='back' onClick={handleClick}>Back</button> : null
+      }
 
       {
         searched === true
@@ -66,7 +100,7 @@ function App() {
       {
         results === true
         ?
-        <FinalResults title={title} resArr={resArr}/>
+        <FinalResults title={title} resArr={resArr} setSearched={setSearched} setResults={setResults} titleDetails= {titleDetails}/>
         : null
       }
 
