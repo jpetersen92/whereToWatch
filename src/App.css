@@ -13,10 +13,10 @@ html {
 }
 
 body {
-  background-color: darkslategray;
   max-width: 1000px;
   margin: 0 auto;
-
+  background-color: darkslategray;
+  
 }
 
 .App {
@@ -38,11 +38,25 @@ h1 {
 
 h2 {
   font-size: 1.3rem;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 h4 {
   margin-bottom: 8px;
+}
+
+a {
+  border-radius: 5px;
+  padding: 3px 15px 5px;
+  background-color: #fff;
+  color: #000;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+a:hover {
+  background-color: #000;
+  color: #fff;
 }
 
 .back {
@@ -54,6 +68,7 @@ form {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 30px;
 }
 
 .titleSearch, input {
@@ -96,7 +111,7 @@ button:hover {
 
 .titleContainer {
   display: flex;
-  margin: 50px 0 25px;
+  margin: 25px 0;
 }
 
 .title {
@@ -120,14 +135,16 @@ button:hover {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 10px 0 30px;
 }
 
 .resultsCard {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   margin: 25px;
-  width: 150px;
+  width: 200px;
   text-align: center;
 }
 
