@@ -10,16 +10,19 @@ const baseUrl = 'https://api.watchmode.com/v1/';
 const apiKey = 'wpBNZj7YCKWCgbOoirUk98YWjhsUP0PxcCs8kcXP';
 
 
-// use the WatchMode API to search database for movie streaming
-// User inputs movie or show title
-// on submit title will be used to call search api to get title_id
-// with title_id another api call will be used to get title streaming sources
-// source name, region, type, price (if available) and web_url to be posted to page
-// show show/movie title, plot_overview, type, 
-
-
 // TO DOS
 // create error handeling for if not data is available or spelt wrong
+// add loading screen for when api call is being made
+
+// COMPLETED
+// use the WatchMode API to search database for movie streaming ✔️ 
+// User inputs movie or show title ✔️ 
+// on submit title will be used to call search api to get title_id ✔️ 
+// with title_id another api call will be used to get title streaming sources ✔️ 
+// source name, type, price (if available) and web_url to be posted to page ✔️ 
+// show show/movie title, plot_overview, poster ✔️ 
+
+
 
 function App() {
   const [title, setTitle] = useState('')
