@@ -106,11 +106,13 @@ button:hover {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 100px;
+  margin: 100px 0;
+
 }
 
 .titleContainer {
   display: flex;
+  /* justify-content: center; */
   margin: 25px 0;
 }
 
@@ -167,4 +169,20 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.noRes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.poster {
+  width: 185px;
+}
+
+.footerImage {
+  width: 100%;
 }

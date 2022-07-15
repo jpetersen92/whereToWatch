@@ -11,8 +11,7 @@ const apiKey = 'wpBNZj7YCKWCgbOoirUk98YWjhsUP0PxcCs8kcXP';
 
 
 // TO DOS
-// create error handeling for if not data is available or spelt wrong
-// add loading screen for when api call is being made
+// Create partical background
 
 // COMPLETED
 // use the WatchMode API to search database for movie streaming ✔️ 
@@ -21,6 +20,8 @@ const apiKey = 'wpBNZj7YCKWCgbOoirUk98YWjhsUP0PxcCs8kcXP';
 // with title_id another api call will be used to get title streaming sources ✔️ 
 // source name, type, price (if available) and web_url to be posted to page ✔️ 
 // show show/movie title, plot_overview, poster ✔️ 
+// create error handeling for if not data is available or spelt wrong ✔️
+// add loading screen for when api call is being made ✔️
 
 
 

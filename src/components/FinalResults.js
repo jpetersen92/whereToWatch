@@ -69,7 +69,7 @@ const FinalResults = ({title, resArr, setSearched, setResults, titleDetails, loa
                         })
                     }
                     </div>
-                    <img src={titleDetails.backdrop} alt="" />
+                    <img className="footerImage" src={titleDetails.backdrop} alt="" />
                 </div>
 
         )
