@@ -2,12 +2,13 @@ import { useState } from "react"
 import axios from "axios"
 
 
-const SearchForm = ({ setSearched, setSearchArr, baseUrl, apiKey, setResults }) => {
+const SearchForm = ({ setSearched, setSearchArr, baseUrl, apiKey, setResults, setLoading }) => {
 
     const [input, setInput] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        setLoading(true)
         setSearched(true)
         setResults(false)
         getTitleId()
@@ -25,6 +26,7 @@ const SearchForm = ({ setSearched, setSearchArr, baseUrl, apiKey, setResults }) 
         }
         }).then((res) => {
             setSearchArr(res.data.title_results)
+            setLoading(false)
         })
     }
 

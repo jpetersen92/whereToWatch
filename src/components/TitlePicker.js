@@ -1,17 +1,24 @@
+import { PulseLoader } from "react-spinners";
 
-
-const TitlePicker = ({ searchArr, setSearched, setTitleId, setTitle, setResults }) => {
+const TitlePicker = ({ searchArr, setSearched, setTitleId, setTitle, setResults, setLoading, loading }) => {
 
     const handleClick = (e) => {
         setTitleId(e.target.id);
         setTitle(e.target.textContent);
+        setLoading(true)
         setSearched(false);
         setResults(true);
     }
 
-    if (searchArr.length === 0) {
+    if (loading) {
+        return(
+            <div className="loader">
+                <PulseLoader color="#fff"/>
+            </div>
+        )
+    }else if (searchArr.length === 0) {
         return (
-            <div className="nores">
+            <div className="noRes">
                 <h3>Sorry this movie or show title was not found. Double check spelling or try a new title.</h3>
             </div>
         )

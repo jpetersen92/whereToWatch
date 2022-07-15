@@ -1,4 +1,6 @@
-const FinalResults = ({title, resArr, setSearched, setResults, titleDetails}) => {
+import { PulseLoader } from "react-spinners"
+
+const FinalResults = ({title, resArr, setSearched, setResults, titleDetails, loading}) => {
 
     const uniqueObjects = [...new Map(resArr.map(item => [item.source_id, item])).values()]
 
@@ -7,10 +9,15 @@ const FinalResults = ({title, resArr, setSearched, setResults, titleDetails}) =>
         setSearched(true)
     }
 
-    // DELETE THIS LOG
-    // console.log(uniqueObjects)
 
-    if (uniqueObjects.length === 0) {
+
+    if (loading) {
+        return (
+            <div className="loader">
+                <PulseLoader color="#fff"/>
+            </div>
+        )
+    } else if (uniqueObjects.length === 0) {
         return (
             <div className="noRes">
                 <h3>Sorry No Results Found</h3>
@@ -64,6 +71,7 @@ const FinalResults = ({title, resArr, setSearched, setResults, titleDetails}) =>
                     </div>
                     <img src={titleDetails.backdrop} alt="" />
                 </div>
+
         )
     }
 }

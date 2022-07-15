@@ -161,3 +161,10 @@ button:hover {
 .resultsCard li {
   margin: 5px 0;
 }
+
+.loader {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

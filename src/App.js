@@ -32,6 +32,7 @@ function App() {
   const [titleDetails, setTitleDetails] = useState([])
   const [searched, setSearched] = useState(false)
   const [results, setResults] = useState(false)
+  const [loading, setLoading] = useState(false)
 
 
   const getSourceDetails = () => {
@@ -58,6 +59,9 @@ function App() {
     }).then((res) => {
       setTitleDetails(res.data)
       console.log(res.data)
+      setTimeout(() => {
+        setLoading(false)
+      }, 1000)
     })
   }
 
@@ -75,8 +79,6 @@ function App() {
 
   return (
     <div className="App">
-      
-
       {
         results === false
         ? 
@@ -84,10 +86,11 @@ function App() {
         <h1>Where to Watch</h1>
         <h2>Search to see if a movie or tv show is available stream, buy or rent</h2>
         </> : null
-        // <button className='back' onClick={handleClick}>Back</button>
       }
 
-      <SearchForm setSearched={setSearched} setSearchArr={setSearchArr} baseUrl={baseUrl} apiKey={apiKey} setResults={setResults}/>
+      <SearchForm setSearched={setSearched} setSearchArr={setSearchArr} baseUrl={baseUrl} apiKey={apiKey} setResults={setResults} setLoading={setLoading}/>
+
+      
 
       {
         results === true ? <button className='back' onClick={handleClick}>Back</button> : null
@@ -96,14 +99,14 @@ function App() {
       {
         searched === true
         ?
-        <TitlePIcker searchArr={searchArr} setSearched={setSearched} setTitleId={setTitleId} setTitle={setTitle} setResults={setResults}/>
+        <TitlePIcker searchArr={searchArr} setSearched={setSearched} setTitleId={setTitleId} setTitle={setTitle} setResults={setResults} loading={loading} setLoading={setLoading}/>
         : null
       }
 
       {
         results === true
         ?
-        <FinalResults title={title} resArr={resArr} setSearched={setSearched} setResults={setResults} titleDetails= {titleDetails}/>
+        <FinalResults title={title} resArr={resArr} setSearched={setSearched} setResults={setResults} titleDetails= {titleDetails} loading={loading}/>
         : null
       }
 
